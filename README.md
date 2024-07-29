@@ -65,21 +65,21 @@ src/
    
    
 **main/**   
-AnalysisManager.java : 전체적인 흐름을 관리하는 메인 클래스입니다. 애플리케이션의 진입점 역할을 하기 때문에, 프로젝트의 구조를 쉽게 파악할 수 있도록 별도의 패키지의 포함시키지 않고 main 디렉토리 바로 아래에 두었습니다.
+**AnalysisManager.java** : 전체적인 흐름을 관리하는 메인 클래스입니다. 애플리케이션의 진입점 역할을 하기 때문에, 프로젝트의 구조를 쉽게 파악할 수 있도록 별도의 패키지의 포함시키지 않고 main 디렉토리 바로 아래에 두었습니다.
    
 **reader/**   
-APILogReader.java : 로그 파일을 읽고 각 줄의 데이터를 분석 및 파싱하여 저장하는 전체 프로세스를 담당합니다. 각 줄의 상태 코드가 200 일 경우에만 해당 줄을 읽도록 했습니다. split() 과 substring() 을 통해 파싱하여 LogData 객체로 저장합니다. 추후 기능 확장 가능성을 고려해 ‘요청 시간’도 LocalDateTime 형태로 저장하였습니다.    
-LogData.java : 데이터를 캡슐화하고, 관련 데이터와 기능을 하나의 단위로 묶어 관리하기 위한 클래스입니다. APILogReader 클래스만 참조하고 있고 별도의 데이터 객체 관련 패키지가 불필요하다고 판단해 reader 패키지에 위치시켰습니다. 생성자와 getter을 포함합니다.   
+**APILogReader.java** : 로그 파일을 읽고 각 줄의 데이터를 분석 및 파싱하여 저장하는 전체 프로세스를 담당합니다. 각 줄의 상태 코드가 200 일 경우에만 해당 줄을 읽도록 했습니다. split() 과 substring() 을 통해 파싱하여 LogData 객체로 저장합니다. 추후 기능 확장 가능성을 고려해 ‘요청 시간’도 LocalDateTime 형태로 저장하였습니다.    
+**LogData.java** : 데이터를 캡슐화하고, 관련 데이터와 기능을 하나의 단위로 묶어 관리하기 위한 클래스입니다. APILogReader 클래스만 참조하고 있고 별도의 데이터 객체 관련 패키지가 불필요하다고 판단해 reader 패키지에 위치시켰습니다. 생성자와 getter을 포함합니다.   
    
 **analysis/**   
-AnalysisAPIKeyUsage.java : 메인 클래스로부터 LogData 객체 리스트를 받아와 가장 많은 apiKey를 반환합니다.   
-AnalysisBrowserUsage.java : 메인 클래스로부터 LogData 객체 리스트를 받아와 각 브라우저별 비율을 내림차순로 정렬해 백분율 형태로 반환합니다.   
-AnalysisTopServiceID.java : 메인 클래스로부터 LogData 객체 리스트를 받아와 apiServiceId 개수를 집계하고, 내림차순으로 정렬해 상위 3개와 각각의 요청 수를 반환합니다.   
+**AnalysisAPIKeyUsage.java** : 메인 클래스로부터 LogData 객체 리스트를 받아와 가장 많은 apiKey를 반환합니다.   
+**AnalysisBrowserUsage.java** : 메인 클래스로부터 LogData 객체 리스트를 받아와 각 브라우저별 비율을 내림차순로 정렬해 백분율 형태로 반환합니다.   
+**AnalysisTopServiceID.java** : 메인 클래스로부터 LogData 객체 리스트를 받아와 apiServiceId 개수를 집계하고, 내림차순으로 정렬해 상위 3개와 각각의 요청 수를 반환합니다.   
 위 클래스 공통적으로 람다 표현식과 stream(), 이중 콜론을 사용하여 코드를 간결하게 하였고 가독성을 높혔습니다.   
    
    
 **writer/**   
-ReportFileWriter.java : 각 분석의 결과를 output.log 에 출력합니다. 호환성을 고려하여 UTF-8 인코딩을 사용하였습니다.   
+**ReportFileWriter.java** : 각 분석의 결과를 output.log 에 출력합니다. 호환성을 고려하여 UTF-8 인코딩을 사용하였습니다.   
 
 ## TIL 모음   
 
